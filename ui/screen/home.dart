@@ -13,8 +13,9 @@ class Home extends StatelessWidget {
     final bloc = BlocProvider.of<BlocCharacter>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rick and Morty"),
+        title: Text("Rick & Morty", style: TextStyle(color: Colors.lightGreenAccent),),
         centerTitle: true,
+        backgroundColor: Colors.lightGreen,
       ),
       body:  StreamBuilder(
           stream: bloc.stream,
