@@ -1,13 +1,19 @@
 
 
 class Character {
-  final String _name;
-  final String _status;
-  final String _species;
-  final String _gender;
-  final String _imagepath;
+  String _name;
+  String _status;
+  String _species;
+  String _gender;
+  String _imagepath;
 
-  Character.fromJson(this._name, this._status, this._species, this._gender, this._imagepath);
+  Character.fromJson(Map json){
+    _name = json["name"];
+    _status = json["status"];
+    _species = json["species"];
+    _gender = json["gender"];
+    _imagepath = json["image"];
+  }
 
   String showName(){
     return this._name;

@@ -12,11 +12,12 @@ class ListCharacter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
       itemBuilder: (ctx, i){
-        return TileCharacter(character: list[i],);
+        return TileCharacter(character: list[i]);
       },
-      separatorBuilder: (ctx, i) => Padding(padding: EdgeInsets.all(5.0)),
       itemCount: list.length
     );
   }

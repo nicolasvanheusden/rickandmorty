@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:rickandmorty/blocs/bloc_character.dart';
 import 'package:rickandmorty/blocs/bloc_provider.dart';
+import 'package:rickandmorty/ui/list/list_character.dart';
 
 class Home extends StatelessWidget {
 
@@ -15,15 +16,12 @@ class Home extends StatelessWidget {
         title: Text("Rick and Morty"),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: StreamBuilder(
+      body:  StreamBuilder(
           stream: bloc.stream,
           builder: (ctx, snap){
-            return (snap.hasData) ? Center(child: Text("données à traiter"),) : Center(child: Text("Aucune données"),);
+            return (snap.hasData) ? ListCharacter(list: snap.data) : Center(child: Text("Aucune données"),);
           },
         ),
-      ),
-
     );
   }
 

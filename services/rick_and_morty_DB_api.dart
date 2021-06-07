@@ -18,12 +18,11 @@ class RickAndMortyDBApi {
 
   Future<List<Character>> fetchCharacters() async {
     final Map<String, dynamic> map = await request();
-    List<Character> res = [];
     if (map != null && map["results"] != null) {
       List<dynamic> tmp = map["results"];
-      tmp.map((json) => res.add(Character.fromJson(json["name"], json["status"], json["species"], json["gender"], json["image"])));
+      return tmp.map((json) =>  Character.fromJson(json)).toList();
     }
-    return res;
+
   }
 
 
