@@ -12,13 +12,13 @@ class BlocCharacter extends Bloc {
   Stream<List<Character>> get stream => _streamController.stream;
   Sink<List<Character>> get sink => _streamController.sink;
 
-  fetchSports() async {
+  fetchCharacter() async {
     final sports = await RickAndMortyDBApi().fetchCharacters();
     sink.add(sports);
   }
 
-  BlocSport(){
-    fetchSports();
+  BlocCharacter(){
+    fetchCharacter();
   }
 
   @override

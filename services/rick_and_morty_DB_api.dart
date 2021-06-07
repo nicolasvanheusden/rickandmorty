@@ -8,7 +8,7 @@ import 'package:rickandmorty/model/character.dart';
 class RickAndMortyDBApi {
   final String _baseUrl = "https://rickandmortyapi.com/api/character";
 
-  Future<List<dynamic>> request() async {
+  Future<Map<String, dynamic>> request() async {
     final url = Uri.parse(_baseUrl);
     final result = await http.get(url);
     final body = json.decode(result.body);
@@ -17,8 +17,13 @@ class RickAndMortyDBApi {
 
 
   Future<List<Character>> fetchCharacters() async {
-    final List<dynamic> list = await request();
-    return list;
+    final Map<String, dynamic> map = await request();
+    List<Character> res = [];
+    if (map != null && map["results"] != null) {
+      List<dynamic> tmp = map["results"];
+      tmp.map((json) => res.add(Character.fromJson(json["name"], json["status"], json["species"], json["gender"], json["image"])));
+    }
+    return res;
   }
 
 
